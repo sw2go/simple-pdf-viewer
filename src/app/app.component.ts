@@ -28,6 +28,9 @@ export class AppComponent {
   zoomBox: any;
   searchBox: any;
 
+
+  lastDblKlick: string;
+
   @ViewChild(SimplePdfViewerComponent) private pdfViewer: SimplePdfViewerComponent;
   @ViewChild(ViewerComponent) private imgViewer: ViewerComponent;
 
@@ -117,8 +120,8 @@ export class AppComponent {
     
   }
 
-  xx(v: any) {
-    console.log("innerHtml:" + v.target.innerHTML);
+  doubleKlick(v: any) {
+    this.lastDblKlick = v.target.innerHTML;
     console.log("innerHtml:" + v.target.innerHTML);
   }
 

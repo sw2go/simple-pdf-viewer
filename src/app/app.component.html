@@ -164,6 +164,7 @@
             <label style="cursor: pointer;" for="file_upload">Load Bookmarks from File</label>
             <input style="display: none;" type="file" id="file_upload" #fileloadBk (change)="loadBookmarks(fileloadBk.files[0])" /> 
         </div> 
+        <div><textarea>{{lastDblKlick}}</textarea></div>
       </div>
 
       <!-- Snapshots -->
@@ -181,7 +182,7 @@
     <section id="viewer">
       <simple-pdf-viewer #pdfViewer [src]="src" [removePageBorders]="false"
         (onError)="onError($event)" (onProgress)="onProgress($event)" (onLoadComplete)="onLoadComplete()"
-        
+        (dblclick)="doubleKlick($event)"
         
         
         >
