@@ -52,7 +52,7 @@
           <input style="display: none;" #urlField type="file" (change)="openDocument(urlField.files)" accept="application/pdf">
           <p class="normal">or put the URL</p>
           <input type="input" [(ngModel)]="urlBox" (keyup.enter)="openUrl(urlBox)" placeholder="Type a URL...">
-          <div class="subMenuItem" (click)="openUrl(urlBox)">Open</div>
+          <div class="subMenuItem" (click)="openUrl(urlBox)">Open</div>       
       </div>
       
       <!-- Table of Content -->
@@ -157,6 +157,13 @@
           Bookmark #{{i}} <br/>
           <span class="small_text">{{bookmark.toQueryString()}}</span>
         </div>
+        <div class="subMenuItem">
+            <a href="" download="bookmarks.json" (click)="saveBookmarks($event.target)">Save Bookmarks to File</a>          
+        </div>
+        <div class="subMenuItem">
+            <label style="cursor: pointer;" for="file_upload">Load Bookmarks from File</label>
+            <input style="display: none;" type="file" id="file_upload" #fileloadBk (change)="loadBookmarks(fileloadBk.files[0])" /> 
+        </div> 
       </div>
 
       <!-- Snapshots -->
@@ -170,9 +177,14 @@
     </section>
   
     <!-- Simple PDF Viewer Container -->
+    <!-- (dblclick)="xx($event)" -->
     <section id="viewer">
       <simple-pdf-viewer #pdfViewer [src]="src" [removePageBorders]="false"
-        (onError)="onError($event)" (onProgress)="onProgress($event)" (onLoadComplete)="onLoadComplete()">
+        (onError)="onError($event)" (onProgress)="onProgress($event)" (onLoadComplete)="onLoadComplete()"
+        
+        
+        
+        >
       </simple-pdf-viewer>
       <div *ngIf="!pdfViewer.isDocumentLoaded()" class="infoBox">
         <div class="fa fa-circle-o-notch fa-spin" *ngIf="!errorMsg"></div>

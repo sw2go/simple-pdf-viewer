@@ -900,7 +900,7 @@ export class SimplePdfViewerComponent implements OnInit, OnDestroy {
     return pagePromise.then((page: PDF.PDFPageProxy) => {
       const viewport = page.getViewport(1, this.rotation);
       const container = this.getContainer();
-      let x = container.scrollLeft / container.scrollWidth * viewport.width;
+      let x = container.scrollLeft / container.scrollWidth * viewport.width;      
       let y = (container.scrollHeight - container.scrollTop) / container.scrollHeight * viewport.height;
       if(this.rotation === 90) {
         y = container.scrollTop / container.scrollHeight * viewport.height;
